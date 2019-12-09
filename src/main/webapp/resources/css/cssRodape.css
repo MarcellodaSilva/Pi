@@ -1,0 +1,82 @@
+body{
+	margin:0;
+}
+#bottom  {
+	position:relative;
+	width: 100%;
+	bottom: 0px;
+	top:60px;
+}
+
+.footer-top{
+	background-color: #485460;
+	height: 185px;
+	width: 100%;
+}
+
+.footer-bot{
+	background-color: #2d3436;
+	height: 45px;
+	width: 100%;
+}
+
+
+.cop h5{
+	position:absolute;
+	top:189px;
+	margin: 15px 10px;
+}
+
+.logo-footer{
+	position: absolute;
+	
+}
+
+.logo-footer img{
+	height: 50%;
+	width: 125px;
+	margin: 30px 30px;	
+}
+
+.cop h5{
+	color: white;
+}
+
+.redes {
+	position: absolute;
+	text-align: center;
+    right: 0;
+    margin: 8px 50px;
+}
+
+.redes a {
+    margin: 4px;
+}
+
+.endereco {
+	position: absolute;
+	float: right;
+	padding: 20px 0px 0px 10px;
+	font-size: 17px;
+	color: white;
+	top: -28px;
+	height: 150px;
+	width: 300px;
+	right: 15px;
+}
+
+.links {
+	margin-left: 330px;
+	float: left;
+	text-align: center;
+}
+
+.botoes {
+ 	width: 100%;
+ 	margin: 14px;
+}
+
+.botoes a{
+	margin-right :15px;
+	color: white;
+}

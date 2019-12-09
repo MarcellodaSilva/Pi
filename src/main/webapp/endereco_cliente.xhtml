@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+    <h:head>
+        <title>Endereco cliente</title>
+        <h:outputStylesheet library="css" name="CadClientecss.css"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" >
+
+        $(document).ready(function() {
+
+          function limpa_formulário_cep() {
+          $("#rua").val("");
+          $("#bairro").val("");
+          $("#cidade").val("");
+        //  $("#estado").val("");
+         }
+            
+           $("#cep").blur(function() {
+
+            var cep = $(this).val().replace(/\D/g, '');
+
+          
+            if (cep != "") {
+  
+             var validacep = /^[0-9]{8}$/;
+
+            if(validacep.test(cep)) {
+
+                  
+            $("#rua").val("...");
+            $("#bairro").val("...");
+            $("#cidade").val("...");
+           // $("#estado").val("...");
+
+                
+  $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+   if (!("erro" in dados)) {
+                           
+                            $("#rua").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            //$("#estado").val(dados.uf);
+                          } 
+                   else {
+                             
+                         limpa_formulário_cep();
+                         alert("CEP não encontrado.");
+                       }
+                     });
+                    } 
+              else {
+              
+                   limpa_formulário_cep();
+                   alert("Formato de CEP inválido.");
+                 }
+               } 
+          else {
+                   
+               limpa_formulário_cep();
+              }
+         }
+     }
+
+    </script>
+    </h:head>
+    <h:body>
+  <fieldset id="fildset">
+  <legend>Cadastro de Endereço</legend>
+  <h:form>
+<h:panelGrid columns="1">
+<h:outputLabel for="cep" value="CEP: "/>
+  <h:message for="cep"/>
+  <h:inputText id="cep" value="#{enderecoCLienteBean.enderecoCliente.cep}"  style="max-height:22px"/>
+         
+  <h:outputLabel for="rua" value="Endereço: "/>
+  <h:message for="rua"/>
+  <h:inputText id="rua" value="#{enderecoCLienteBean.enderecoCliente.rua}" style="width: 320px; max-height:22px"/>
+          
+  <h:outputLabel for="numero" value="Número: "/>
+  <h:message for="numero"/>
+  <h:inputText id="numero" value="#{enderecoCLienteBean.enderecoCliente.numero}" style="width: 50px;max-height:22px"/>
+      
+  <h:outputLabel for="bairro" value="Bairro: "/>
+  <h:message for="bairro"/>
+  <h:inputText id="bairro" value="#{enderecoCLienteBean.enderecoCliente.bairro}" style="width: 250px; max-height:22px"/>
+  
+  <h:outputLabel for="cidade" value="Cidade: "/>
+  <h:message for="cidade"/>
+  <h:inputText id="cidade" value="#{enderecoCLienteBean.enderecoCliente.cidade}"  style="width: 270px; max-height:22px"/>
+  
+  <h:commandButton id="enderecoCliente" value="Cadastrar Endereço" action="#{enderecoCLienteBean.cadastrarEdereco}"/>
+</h:panelGrid>
+    </h:form>
+  </fieldset>    
+    </h:body>
+</html>

@@ -1,0 +1,66 @@
+body{
+background-color: #F0F8FF;
+}
+#container-cabecalho{
+position:relative;
+top:0;
+width:100%;
+height:120px;
+background-color: #40E0D0;
+}
+
+#container-logo a{
+	margin:0;
+}
+#campo-pesquisa{
+	position:absolute;
+	top:40px;
+	left:35%;
+}
+#icon-pesquisa img{
+position: absolute;
+top:1px;
+left: 106%;
+}
+
+#container-carrinho img{
+position: absolute;
+top:29px;
+left:68%;
+
+}
+
+#container-btns{
+position:absolute;
+top:40px;
+right:2%;
+}
+
+
+body{
+	margin:0;
+	padding: 0;
+}
+.dialog {
+	top: 37% !important;
+}
+.dialog img {
+	width: 75px;
+	height: 75px;
+}
+
+#img-usuario-login{
+	margin-top:30px;
+	margin-left:30px;
+}
+
+
+#img-farmacia-login{
+	position:absolute;
+	top: 40px;
+	right:40px;
+	margin-right:0;
+}
+.dialog img:hover {
+	transform:scale(1.2);
+}

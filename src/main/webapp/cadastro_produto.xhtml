@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./resources/templates/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+		<title>Cadastro Produto</title>
+	</h:head>
+
+
+	<ui:define name="content">
+		<div class="container-formulario">
+			<fieldset id="fildset">
+				<legend>Cadastrar Produto</legend>
+				<h:form>
+
+					<h:panelGrid columns="1">
+
+						<h:outputLabel for="iptnome" value="Nome" />
+						<h:message for="iptnome" />
+						<h:inputText id="iptnome" value="#{produtoBean.produto.nome}"
+							required="true" style="width: 480px; max-height:22px"/>
+
+						<h:outputLabel for="iptmarca" value="Marca" />
+						<h:message for="iptmarca" />
+						<h:inputText id="iptmarca" value="#{produtoBean.produto.marca}"
+							required="true" style="width: 260px; max-height:22px"/>
+
+						<h:outputLabel for="iptvalor" value="Valor" />
+						<h:message for="iptvalor" />
+						<h:inputText id="iptvalor" value="#{produtoBean.produto.valor}"
+							required="true" style="width: 220px; max-height:22px"/>
+
+						<h:outputLabel for="iptquantidade" value="Quantidade" />
+						<h:message for="iptquantidade" />
+						<p:inputText id="iptquantidade" type="number"
+							value="#{produtoBean.produto.quantidade}" required="true" />
+
+
+						<h:outputLabel for="ipttipo" value="Tipo" />
+						<h:message for="ipttipo" />
+						<h:inputText id="ipttipo" value="#{produtoBean.produto.tipo}"
+							required="true" style="width: 220px; max-height:22px"/>
+
+						<h:outputLabel for="iptvalidade" value="Validade" />
+						<h:message for="iptvalidade" />
+						<p:inputText id="iptvalidade"
+							value="#{produtoBean.produto.validade}" required="true" style="width: 220px; max-height:22px">
+							<f:convertDateTime type="date" pattern="dd/mm/yyyy" />
+						</p:inputText>
+
+						<h:outputLabel for="iptdescricao" value="Descrição" />
+						<h:message for="iptdescricao" />
+						<p:inputTextarea id="iptdescricao"
+							value="#{produtoBean.produto.descricao}" required="true"  rows="7" cols="50" autoResize="true" maxlength="800"/>
+
+						<h:commandButton action="#{produtoBean.adicionarProduto}"
+							value="Cadastrar" />
+					</h:panelGrid>
+				</h:form>
+			</fieldset>
+		</div>
+	</ui:define>
+</ui:composition>

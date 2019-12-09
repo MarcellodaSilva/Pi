@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./resources/templates/template.xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">>
+
+
+	<h:head>
+		<title>Resultado</title>
+	</h:head>
+
+
+	<ui:define name="content" >
+		<h:form id="form-resultado">
+		<p:dataGrid var="produto" value="#{pesquisaProdutoBean.produtos}"
+			columns="3" layout="grid" rows="12" paginator="true" id="produtos"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16">
+
+			<f:facet name="header">
+            Resultado da Pesquisa
+        </f:facet>
+
+			<p:panel header="#{produto.nome}" style="text-align:center" >
+				<h:panelGrid columns="1" style="width:100%">
+					 <p:graphicImage value="./resources/img/generico.png" style="width:110px; height: 140px"/> 
+					<h:outputText value="Marca:" />
+					<h:outputText value="#{produto.marca}" />
+
+					<h:outputText value="Preço:" />
+					<h:outputText value="R$#{produto.valor}" />
+
+					<h:outputText value="tipo:" />
+					<h:outputText value="#{produto.tipo}" />
+
+					<h:outputText value="Validade:" />
+					<h:outputText value="#{produto.validade}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+		</p:dataGrid>
+	</h:form>
+	</ui:define>
+</ui:composition>
+

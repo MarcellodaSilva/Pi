@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="cabecalho.css" />
+</h:head>
+<h:body>
+	<p:growl id="messages" showDetail="true" />
+
+	<div id="container-cabecalho">
+
+		<h:form id="form-pesquisa">
+			
+			<div id="container-logo">
+
+				<a href="pagina_inicial.xhtml"><img
+					src="./resources/img/logo.png" /></a>
+			</div>
+			<div id="campo-pesquisa">
+
+				<p:inputText id="iptpesquisa" placeholder="Pesquisar..."
+					value="#{pesquisaProdutoBean.nomeProduto}"
+					style="width:300px; height:30px; border: 2px solid #40E0D0; border-radius:10px" />
+				<div id="icon-pesquisa">
+					<h:commandLink action="#{pesquisaProdutoBean.listarProdutos}">
+						<img src="./resources/img/lupa.png" />
+					</h:commandLink>
+				</div>
+
+			</div>
+
+			<div id="container-carrinho">
+				<a href="Carrinho.xhtml"><img
+					src="./resources/img/cesta_compra.png" alt="Carrinho" /></a>
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./resources/templates/template3.xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+		<title>Login</title>
+	</h:head>
+
+
+	<ui:define name="content" >
+		<h:form>
+         <fieldset id="fieldset-login">
+         <legend>Login</legend>
+          <h:panelGrid columns="1">
+          <h:outputLabel for="iptemail" value="E-mail:" />
+          <h:inputText id="iptlogin" value="#{loginBean.login}" />
+          <h:outputLabel for="iptsenha" value="Senha:" />
+          <h:inputSecret id="iptsenha" value="#{loginBean.senha}" /> 
+          <h:commandButton id="Login" value="Acessar" action="#{loginBean.logar}"/> 
+          </h:panelGrid>
+         </fieldset> 
+    </h:form>
+	</ui:define>
+</ui:composition>
+

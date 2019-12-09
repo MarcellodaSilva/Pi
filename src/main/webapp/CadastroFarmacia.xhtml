@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./resources/templates/template.xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+		<title>Cadastro Farmacia</title>
+	</h:head>
+
+
+	<ui:define name="content">
+		<div class="container-formulario">
+			<fieldset id="fildset">
+				<legend>Cadastrar Farmacia</legend>
+				<h:form>
+
+					<h:panelGrid columns="1">
+						<h:message for="nome" />
+						<h:outputLabel for="nome" value="Nome: " />
+						<h:inputText id="nome" value="#{farmaciaBean.farmacia.nome}" required="true" style="width: 480px; max-height:22px" />
+
+						<h:message for="cnpj" />
+						<h:outputLabel for="cnpj" value="CNPJ: " />
+						<h:inputText id="cnpj" value="#{farmaciaBean.farmacia.cnpj}" required="true" style="width: 260px; max-height:22px"/>
+
+						<h:message for="telefone" />
+						<h:outputLabel for="telefone" value="Telefone: " />
+						<h:inputText id="telefone1"
+							value="#{farmaciaBean.farmacia.telefone01}" required="true" style="width: 220px; max-height:22px" />
+
+
+						<h:outputLabel for="telefone2" value="Celular: " />
+						<h:message for="telefone2" />
+						<h:inputText id="telefone2"
+							value="#{farmaciaBean.farmacia.telefone02}" style="width: 220px; max-height:22px" />
+
+
+
+						<h:outputLabel for="iptemail" value="Email" />
+						<h:message for="iptemail" />
+						<h:inputText id="iptemail" value="#{farmaciaBean.farmacia.login}"
+							required="true" style="width: 420px; max-height:22px"/>
+
+						<h:outputLabel for="iptsenha" value="Senha" />
+						<h:message for="iptsenha" />
+						<h:inputSecret id="iptsenha"
+							value="#{farmaciaBean.farmacia.senha}" required="true" style="width: 320px; max-height:22px"/>
+						<h:commandButton value="Cadastrar"
+							action="#{farmaciaBean.adicionarFarmacia}" style="width:120px; height:30px"/>
+					</h:panelGrid>
+				</h:form>
+			</fieldset>
+		</div>
+	</ui:define>
+</ui:composition>
+

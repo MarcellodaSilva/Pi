@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Facelet Title</title>
+	<h:outputStylesheet library="css" name="cssRodape.css" />
+	<link rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+</h:head>
+<h:body>
+	<h:form>
+		<div class="footer-top">
+			
+			<div class="logo-footer">
+				<img src="" alt="" />
+			</div>
+			
+			
+			
+			<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="endereco">
+					Av. Santo Antônio, 385 - Santo Antônio<br /> Garanhuns - PE,
+					55293-000<br /> TELEFONE: (87) 3025-0098 | (87) 98107-3280
+				</p>
+			</div>
+
+		</div>
+		<div class="footer-bot">
+			<div class="cop">
+				<h5>FarmaNet Copyright 2019.</h5>
+			</div>
+			<div class="links">
+				<div class="botoes">
+
+					<h:commandLink value="Sobre" 
+						action="PaginaInicial?faces-redirect=true" />
+					<h:commandLink value="Parcerias"
+						action="PaginaInicial?faces-redirect=true" />
+					<h:commandLink value="Ajuda?" 
+						action="PaginaInicial?faces-redirect=true" />
+					<h:commandLink value="contato"
+						action="ContatoView?faces-redirect=true" />
+				</div>
+			</div>
+			
+			<div class="redes">
+				<a href="https://www.instagram.com/">
+					<i class="fab fa-instagram fa-2x" ></i>
+				</a>
+				<a href="https://pt-br.facebook.com/">
+					<i class="fab fa-facebook fa-2x"></i>
+				</a>
+				<a href="https://twitter.com/">
+					<i class="fab fa-twitter-square fa-2x"></i>
+				</a>
+			</div>
+			
+		</div>
+	</h:form>
+</h:body>
+</html>
