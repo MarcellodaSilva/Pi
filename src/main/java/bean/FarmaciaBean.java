@@ -25,7 +25,7 @@ public class FarmaciaBean implements Serializable {
 	
 	@Inject
 	private FarmaciaService farmaciaService;
-
+	
 	public Farmacia getFarmacia() {
 		return farmacia;
 	}
@@ -53,4 +53,5 @@ public class FarmaciaBean implements Serializable {
 		}
 		
 	}
+	
 }

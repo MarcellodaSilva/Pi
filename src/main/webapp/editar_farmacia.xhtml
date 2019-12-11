@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+#fildset{
+right: 400px;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
+	position: absolute;
+	left: 29%;
+	width: 40%;
+	top: 25%;
+	margin-bottom: 5%;
+	background-color: white;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h:form>
+		<div class="container-formulario">
+		  <fieldset id="fildset">
+				<legend>Editar Farmacia</legend>
+
+					<h:panelGrid columns="1">
+						<h:message for="nome" />
+						<h:outputLabel for="nome" value="Nome: " />
+						<h:inputText id="nome" value="#{}" required="true" style="width: 480px; max-height:22px" />
+
+						<h:message for="cnpj" />
+						<h:outputLabel for="cnpj" value="CNPJ: " />
+						<p:inputMask mask="99.999.999/9999-99" id="cnpj" value="#{}" required="true" style="width: 260px; max-height:22px" disabled="true"/>
+						
+						<h:message for="telefone" />
+						<h:outputLabel for="telefone" value="Telefone: " />
+						<p:inputMask mask="(99)99999-9999" id="telefone1"
+							value="#{}" required="true" style="width: 220px; max-height:22px" />
+
+						<h:outputLabel for="telefone2" value="Celular: " />
+						<h:message for="telefone2" />
+						<p:inputMask mask="(99)99999-9999" id="telefone2"
+							value="#{}" style="width: 220px; max-height:22px" />
+
+
+						<h:outputLabel for="iptemail" value="Email" />
+						<h:message for="iptemail" />
+						<h:inputText id="iptemail" value="#{}"
+							required="true" style="width: 420px; max-height:22px"/>
+
+						<h:outputLabel for="iptsenha" value="Senha" />
+						<h:message for="iptsenha" />
+						<h:inputSecret id="iptsenha"
+							value="#{}" required="true" style="width: 320px; max-height:22px"/>
+							
+						<h:commandButton value="Salvar"
+							action="#{}" style="width:120px; height:30px"/>
+					</h:panelGrid>
+					</fieldset>
+				</div>
+		</h:form>
+</h:body>
+</html>

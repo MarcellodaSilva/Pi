@@ -60,4 +60,6 @@ public class ProdutoBean implements Serializable {
 		produtos = produtoService.listar();
 		System.out.println(produtos.get(1).getNome());
 	}
+	
+	
 }

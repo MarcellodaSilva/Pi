@@ -25,4 +25,8 @@ public class UsuarioService implements Serializable {
 	public Usuario logar(String senha, String login) {
 		return dao.logar(senha, login);
 	}
+	
+	public void excluirConta(String senha, String login) {
+		dao.excluirConta(senha, login);
+	}
 }
