@@ -47,7 +47,7 @@ public class EnderecoFarmacia implements Serializable {
     @Column(name = "numero", nullable = false, length=7)
     private String numero;
     
-    @JoinColumn(name = "id_farmacia", referencedColumnName = "id_farmacia")
+    @JoinColumn(name = "id_farmacia", referencedColumnName = "id")
     @OneToOne
     private Farmacia Farmacia;
 

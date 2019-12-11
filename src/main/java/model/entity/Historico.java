@@ -31,7 +31,7 @@ public class Historico implements Serializable {
     private List<Carrinho> carrinho;
     
     @OneToOne
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente cliente;
     
     @NotEmpty

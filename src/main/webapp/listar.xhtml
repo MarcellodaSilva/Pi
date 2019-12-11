@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<style type="text/css">
+    .ui-paginator a {
+        margin-right: 5px;
+    }
+</style>
+ 
+</h:head>
+<h:body>
+<h:form>
+    <p:dataTable id="listar" var="produto" value="#{produtoBean.produtos}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Nome" />
+            </f:facet>
+            <h:outputText value="#{produto.nome}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Tipo"/>
+            </f:facet>
+            <h:outputText value="#{produto.tipo}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Quantidade" />
+            </f:facet>
+            <h:outputText value="#{produto.quantidade}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Validade" />
+            </f:facet>
+            <h:outputText value="#{produto.validade}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
+</h:body>
+</html>

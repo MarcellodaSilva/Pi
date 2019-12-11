@@ -3,29 +3,23 @@ package model.entity;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CNPJ;
 
-@Entity
+@Entity(name = "Farmacia")
 @Table(name = "farmacia")
-public class Farmacia implements Serializable {
+@DiscriminatorValue(value="Pj")
+public class Farmacia extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_farmacia")
-	private Integer idFarmacia;
 
 	@NotBlank(message = "{farmacia.nome.blank.msg}")
 	@Column(name = "nome", nullable = false, length = 170)
@@ -51,27 +45,8 @@ public class Farmacia implements Serializable {
 	@OneToOne(mappedBy = "farmacia")
 	private Estoque estoque;
 
-	@OneToOne(mappedBy = "farmacia")
-	private Usuario usuario;
-
 	public Farmacia() {}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Integer getIdFarmacia() {
-		return idFarmacia;
-	}
-
-	public void setIdFarmacia(Integer idFarmacia) {
-		this.idFarmacia = idFarmacia;
-	}
-
 	public String getNome() {
 		return nome;
 	}

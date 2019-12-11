@@ -59,6 +59,9 @@ public class ProdutoService implements Serializable {
 		boolean result = dao.removePorID(id);
 		return result;
 	}
+	public List<Produto>listar() throws ValidacaoException{
+		return dao.listar();
+	}
         
         public List<Produto>pesquisar(String produto) throws ValidacaoException{
           return dao.pesquisar(produto);

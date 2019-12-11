@@ -13,9 +13,9 @@
 
 	<ui:define name="content">
 		<div class="container-formulario">
-			<fieldset id="fildset">
+		<h:form rendered="false">
+		  <fieldset id="fildset">
 				<legend>Cadastrar Farmacia</legend>
-				<h:form>
 
 					<h:panelGrid columns="1">
 						<h:message for="nome" />
@@ -24,19 +24,17 @@
 
 						<h:message for="cnpj" />
 						<h:outputLabel for="cnpj" value="CNPJ: " />
-						<h:inputText id="cnpj" value="#{farmaciaBean.farmacia.cnpj}" required="true" style="width: 260px; max-height:22px"/>
-
+						<p:inputMask mask="99.999.999/9999-99" id="cnpj" value="#{farmaciaBean.farmacia.cnpj}" required="true" style="width: 260px; max-height:22px"/>
+						
 						<h:message for="telefone" />
 						<h:outputLabel for="telefone" value="Telefone: " />
-						<h:inputText id="telefone1"
+						<p:inputMask mask="(99)99999-9999" id="telefone1"
 							value="#{farmaciaBean.farmacia.telefone01}" required="true" style="width: 220px; max-height:22px" />
-
 
 						<h:outputLabel for="telefone2" value="Celular: " />
 						<h:message for="telefone2" />
-						<h:inputText id="telefone2"
+						<p:inputMask mask="(99)99999-9999" id="telefone2"
 							value="#{farmaciaBean.farmacia.telefone02}" style="width: 220px; max-height:22px" />
-
 
 
 						<h:outputLabel for="iptemail" value="Email" />
@@ -51,9 +49,42 @@
 						<h:commandButton value="Cadastrar"
 							action="#{farmaciaBean.adicionarFarmacia}" style="width:120px; height:30px"/>
 					</h:panelGrid>
-				</h:form>
-			</fieldset>
+					</fieldset>
+		</h:form>
+			
 		</div>
+		
+ 
+ <h:form rendered="true">
+ <fieldset id="fildset">
+ <legend>Cadastro de Endereço</legend>
+ <h:panelGrid columns="1">
+       <h:outputLabel for="cep" value="CEP: "/>
+       <h:message for="cep"></h:message>
+         <p:inputMask mask="999999-999" id="cep"  value="#{enderecoFarmaciaBean.enderecoFarmacia.cep}" style="max-height:22px"/>
+       
+       <h:outputLabel for="rua" value="Endereço: "/>
+       <h:message for="rua"/>
+       <h:inputText id="rua" value="#{enderecoFarmaciaBean.enderecoFarmacia.rua}" style="width: 320px; max-height:22px"/>
+         
+      
+       <h:outputLabel for="numero" value="Número: "/>
+        <h:message for="numero"/> 
+       <h:inputText id="numero" value="#{enderecoFarmaciaBean.enderecoFarmacia.numero}" style="width: 50px;max-height:22px"/>
+          
+       <h:outputLabel for="bairro" value="Bairro: "/>
+       <h:message for="bairro"/>
+       <h:inputText id="bairro" value="#{enderecoFarmaciaBean.enderecoFarmacia.bairro}" style="width: 250px; max-height:22px"/>
+       
+       <h:outputLabel for="cidade" value="Cidade: "/>
+       <h:message for="cidade"/>
+       <h:inputText id="cidade" value="#{enderecoFarmaciaBean.enderecoFarmacia.cidade}" style="width: 270px; max-height:22px"/>
+            
+       <h:commandButton id="enderecoFarmacia" value="Comfirmar Endereço" action="#{enderecoFarmaciaBean.cadastrarEdereco}"/>
+   </h:panelGrid>
+    </fieldset> 
+</h:form>
+  
 	</ui:define>
 </ui:composition>
 

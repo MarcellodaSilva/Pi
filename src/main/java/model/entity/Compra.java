@@ -62,7 +62,7 @@ public class Compra implements Serializable {
     @ManyToMany
     @JoinTable(name = "Compra_cliente",
     joinColumns= @JoinColumn(name="Id_compra"),
-    inverseJoinColumns= @JoinColumn(name="Id_cliente"))
+    inverseJoinColumns= @JoinColumn(name="Id"))
     private List<Cliente> clientelist;
     
     public List<Cliente> getClientelist() {

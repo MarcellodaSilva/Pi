@@ -25,27 +25,6 @@ public class FarmaciaBean implements Serializable {
 	
 	@Inject
 	private FarmaciaService farmaciaService;
-	@Inject
-	private Usuario usuario;
-	@Inject
-	private UsuarioService usuarioService;
-	
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public UsuarioService getUsuarioService() {
-		return usuarioService;
-	}
-
-	public void setUsuarioService(UsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
-	}
 
 	public Farmacia getFarmacia() {
 		return farmacia;
@@ -69,7 +48,6 @@ public class FarmaciaBean implements Serializable {
 	public void adicionarFarmacia() throws Exception {
 		try{
 			farmaciaService.cadastrarFarmacia(farmacia);
-			usuarioService.cadastrarUsuario(usuario);
 		}catch(ValidacaoException v) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
 		}

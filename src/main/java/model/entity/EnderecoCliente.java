@@ -47,7 +47,7 @@ public class EnderecoCliente implements Serializable {
     @Column(name = "numero", nullable = false, length=7)
     private String numero;
     
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     @OneToOne
     private Cliente Cliente;
 

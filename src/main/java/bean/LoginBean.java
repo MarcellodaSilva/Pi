@@ -10,6 +10,7 @@ import Service.ClienteService;
 import Service.LoginService;
 import model.entity.Cliente;
 import model.entity.Farmacia;
+import model.entity.Usuario;
 
 import java.io.Serializable;
 
@@ -21,7 +22,9 @@ public class LoginBean implements Serializable {
 	@Inject
 	private LoginService loginService;
 	private Cliente cliente;
+	
 	private Farmacia farmacia;
+	
 	private String login;
 
 	public Cliente getCliente() {
@@ -66,15 +69,17 @@ public class LoginBean implements Serializable {
 		this.loginService = loginService;
 	}
 
-	/*public String logar() {
+  public String logar() {
 		try {
-			Object user = loginService.logar(senha, login);
+			Usuario user = loginService.logar(senha, login);
+			 System.out.println(user.getLogin());
 			FacesContext sessao = FacesContext.getCurrentInstance();
-			if (user instanceof Cliente) {
+			if (user.getTipo().equals("Pf")) {
 				sessao.getExternalContext().getSessionMap().put("Perfil", (Cliente) user);
 				cliente = (Cliente) user;
 				return "perfil_cliente";
-			} else if (user instanceof Farmacia) {
+              
+			} else if (user.getTipo().equals("Pj")) {
 				sessao.getExternalContext().getSessionMap().put("Perfil", (Farmacia) user);
 				farmacia = (Farmacia) user;
 				return "perfil_farmacia";
@@ -84,11 +89,11 @@ public class LoginBean implements Serializable {
 			}
 
 		} catch (Exception v) {
-			v.getMessage();
+			v.printStackTrace();
 		}
 		return null;
 
-	}*/
+	}
 
 	public String Deslogar() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

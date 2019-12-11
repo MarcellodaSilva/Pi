@@ -3,31 +3,26 @@ package model.entity;
 
 import java.io.Serializable;
 
+
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
-@Entity
+@Entity(name = "Cliente")
 @Table(name = "cliente")
-public class Cliente implements Serializable {
+@DiscriminatorValue(value="Pf")
+public class Cliente extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_cliente")
-	private Integer idCliente;
 
 	@NotBlank(message = "{cliente.cpf.blank.msg}")
 	@CPF(message = "{cliente.cpf.cpf.msg}")
@@ -56,26 +51,7 @@ public class Cliente implements Serializable {
 	@ManyToMany(mappedBy = "clientelist")
 	private List<Compra> compralist;
 
-	@OneToOne(mappedBy = "cliente")
-	private Usuario usuario;
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Cliente() {
-	}
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
 	}
 
 	public String getCpf() {

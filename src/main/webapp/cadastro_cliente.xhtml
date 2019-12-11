@@ -12,7 +12,7 @@
 
 
 	<ui:define name="content" >
-		<h:form id="cadastroCliente">
+		<h:form id="cadastroCliente" rendered="">
 
 			<div class="container-formulario">
 				<fieldset id="fildset">
@@ -27,21 +27,21 @@
 
 						<h:outputLabel for="iptcpf" value="CPF" />
 						<h:message for="iptcpf" />
-						<h:inputText id="iptcpf" value="#{clienteBean.cliente.cpf}"
-							required="true" style="width: 260px; max-height:22px" />
-
+						<p:inputMask mask="999.999.999-99" id="iptcpf" value="#{clienteBean.cliente.cpf}"
+							required="true" style="width: 260px; max-height:22px"/>
+							
 						<h:outputLabel for="ipttelefone1" value="Telefone" />
 						<h:message for="ipttelefone1" />
-						<h:inputText id="ipttelefone1"
+						<p:inputMask mask="(99)99999-9999" id="ipttelefone1"
 							value="#{clienteBean.cliente.telefone01}" required="true"
-							style="width: 220px; max-height:22px" />
-
+							style="width: 220px; max-height:22px"/>
+						
 						<h:outputLabel for="ipttelefone2" value="Celular" />
 						<h:message for="ipttelefone2" />
-						<h:inputText id="ipttelefone2"
+						<p:inputMask mask="(99)99999-9999" id="ipttelefone2"
 							value="#{clienteBean.cliente.telefone02}" required="false"
-							style="width: 220px; max-height:22px" />
-
+							style="width: 220px; max-height:22px"/>
+						
 						<h:outputLabel for="iptemail" value="Email" />
 						<h:message for="iptemail" />
 						<h:inputText id="iptemail" value="#{clienteBean.usuario.login}"
@@ -59,8 +59,39 @@
 					</h:panelGrid>
 				</fieldset>
 			</div>
-
 		</h:form>
+		
+  
+<h:form rendered="false">
+  <fieldset id="fildset">
+  <legend>Cadastro de Endereço</legend>
+   <h:panelGrid columns="1">
+
+  <h:outputLabel for="cep" value="CEP: "/>
+  <h:message for="cep"/>
+  <p:inputMask mask="999999-999" id="cep" value="#{enderecoCLienteBean.enderecoCliente.cep}" style="max-height:22px"/>    
+    
+  <h:outputLabel for="rua" value="Endereço: "/>
+  <h:message for="rua"/>
+  <h:inputText id="rua" value="#{enderecoCLienteBean.enderecoCliente.rua}" style="width: 320px; max-height:22px"/>
+          
+  <h:outputLabel for="numero" value="Número: "/>
+  <h:message for="numero"/>
+  <h:inputText id="numero" value="#{enderecoCLienteBean.enderecoCliente.numero}" style="width: 50px;max-height:22px"/>
+   
+  <h:outputLabel for="bairro" value="Bairro: "/>
+  <h:message for="bairro"/>
+  <h:inputText id="bairro" value="#{enderecoCLienteBean.enderecoCliente.bairro}" style="width: 250px; max-height:22px"/>
+  
+  <h:outputLabel for="cidade" value="Cidade: "/>
+  <h:message for="cidade"/>
+  <h:inputText id="cidade" value="#{enderecoCLienteBean.enderecoCliente.cidade}"  style="width: 270px; max-height:22px"/>
+  
+  <h:commandButton id="enderecoCliente" value="Cadastrar Endereço" action="#{enderecoCLienteBean.cadastrarEdereco}"/>
+</h:panelGrid>
+    </fieldset> 
+</h:form>
+     
 	</ui:define>
 </ui:composition>
 

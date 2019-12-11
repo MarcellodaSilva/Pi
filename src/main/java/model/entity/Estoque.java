@@ -30,7 +30,7 @@ public class Estoque implements Serializable {
     @OneToOne(mappedBy = "estoque")
     private Compra compra;
     
-    @JoinColumn(name = "id_farmacia", referencedColumnName = "id_farmacia")
+    @JoinColumn(name = "id_farmacia", referencedColumnName = "id")
     @OneToOne
     private Farmacia farmacia;
 

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
       
     <h:head>
         <title>Endereco cliente</title>
@@ -75,12 +76,13 @@
     <h:body>
   <fieldset id="fildset">
   <legend>Cadastro de Endereço</legend>
-  <h:form>
+  <h:form rendered="false">
 <h:panelGrid columns="1">
-<h:outputLabel for="cep" value="CEP: "/>
+
+  <h:outputLabel for="cep" value="CEP: "/>
   <h:message for="cep"/>
-  <h:inputText id="cep" value="#{enderecoCLienteBean.enderecoCliente.cep}"  style="max-height:22px"/>
-         
+  <p:inputMask mask="999.999-999" id="cep" value="#{enderecoCLienteBean.enderecoCliente.cep}" style="max-height:22px"/>    
+    
   <h:outputLabel for="rua" value="Endereço: "/>
   <h:message for="rua"/>
   <h:inputText id="rua" value="#{enderecoCLienteBean.enderecoCliente.rua}" style="width: 320px; max-height:22px"/>
@@ -88,7 +90,7 @@
   <h:outputLabel for="numero" value="Número: "/>
   <h:message for="numero"/>
   <h:inputText id="numero" value="#{enderecoCLienteBean.enderecoCliente.numero}" style="width: 50px;max-height:22px"/>
-      
+   
   <h:outputLabel for="bairro" value="Bairro: "/>
   <h:message for="bairro"/>
   <h:inputText id="bairro" value="#{enderecoCLienteBean.enderecoCliente.bairro}" style="width: 250px; max-height:22px"/>

@@ -24,10 +24,6 @@ public class ClienteBean implements Serializable {
 	private ClienteService clienteService;
 	@Inject
 	private Cliente cliente;
-	@Inject
-	private Usuario usuario;
-	@Inject
-	private UsuarioService usuarioService;
 	private boolean booleanoForm;
 
 	public boolean isBooleanoForm() {
@@ -36,22 +32,6 @@ public class ClienteBean implements Serializable {
 
 	public void setBooleanoForm(boolean booleanoForm) {
 		this.booleanoForm = booleanoForm;
-	}
-
-	public UsuarioService getUsuarioService() {
-		return usuarioService;
-	}
-
-	public void setUsuarioService(UsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	public Cliente getCliente() {
@@ -73,7 +53,6 @@ public class ClienteBean implements Serializable {
 	public void adicionarCliente() throws Exception {
 		try {
 			clienteService.cadastrarCliente(cliente);
-			usuarioService.cadastrarUsuario(usuario);
 		} catch (ValidacaoException v) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));

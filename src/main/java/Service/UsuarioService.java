@@ -15,33 +15,14 @@ import model.entity.Usuario;
 public class UsuarioService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
 	@Inject
 	private UsuarioDao dao;
-
+	
 	public UsuarioService() {
 	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void cadastrarUsuario(Usuario usuario) throws Exception {
-		dao.adiciona(usuario);
-	}
-
-	public List<Usuario> listarUsuario() {
-		return dao.listaTodos();
-	}
-
-	public Usuario getUsuario(Integer id) {
-		return dao.buscaPorId(id);
-	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarUsuario(Usuario usuario) throws Exception {
-		dao.atualiza(usuario);
-	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public boolean removerUsuario(Integer id) {
-		boolean result = dao.removePorID(id);
-		return result;
+	
+	public Usuario logar(String senha, String login) {
+		return dao.logar(senha, login);
 	}
 }

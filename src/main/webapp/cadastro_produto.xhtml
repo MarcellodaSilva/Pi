@@ -48,11 +48,8 @@
 
 						<h:outputLabel for="iptvalidade" value="Validade" />
 						<h:message for="iptvalidade" />
-						<p:inputText id="iptvalidade"
-							value="#{produtoBean.produto.validade}" required="true" style="width: 220px; max-height:22px">
-							<f:convertDateTime type="date" pattern="dd/mm/yyyy" />
-						</p:inputText>
-
+						<p:inputMask mask="99/99/9999" id="iptvalidade" value="#{produtoBean.produto.validade}" required="true" style="width: 220px; max-height:22px"><f:convertDateTime type="date" pattern="dd/mm/yyyy" /></p:inputMask>
+						
 						<h:outputLabel for="iptdescricao" value="Descrição" />
 						<h:message for="iptdescricao" />
 						<p:inputTextarea id="iptdescricao"

@@ -63,7 +63,7 @@ public class UsuarioDao implements Serializable{
 	public boolean removePorID(Integer id) {
 		manager.getTransaction().begin();
 		try{
-			String sql = "Delete From Usuario u Where u.id_usuario = :idUsuario";
+			String sql = "Delete From Usuario u Where u.id = :idUsuario";
 			Query query = manager.createQuery(sql);
 			query.setParameter("idUsuario",id);
 			query.executeUpdate();
@@ -76,17 +76,16 @@ public class UsuarioDao implements Serializable{
 		
 	}
 
-	public Object logar(String senha , String login)  {
+	public Usuario logar(String senha , String login)  {
 		try {
-			Object user;
-			String sql = "select c from Cliente c where c.senha =:senha and c.login =:login";
-			TypedQuery<Object> query = manager.createQuery(sql , Object.class);
+			String hql = "select u from Usuario u where u.senha =:senha and u.login =:login";
+			TypedQuery<Usuario> query = manager.createQuery(hql , Usuario.class);
 			query.setParameter("senha",senha);
 			query.setParameter("login",login);
-			user = query.getSingleResult();
-			
+			Usuario usuario = query.getSingleResult();
+			return usuario;
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
 		return null;
 			

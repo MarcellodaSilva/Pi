@@ -78,7 +78,7 @@ public class FarmaciaDao implements Serializable{
 	public boolean removePorID(Integer id) {
 		manager.getTransaction().begin();
 		try{
-			String sql = "Delete From Farmacia f Where f.id_farmacia = :idFarmacia";
+			String sql = "Delete From Farmacia f Where f.id = :idFarmacia";
 			Query query = manager.createQuery(sql);
 			query.setParameter("idFarmacia",id);
 			query.executeUpdate();

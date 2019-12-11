@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -24,18 +25,26 @@ public class ProdutoBean implements Serializable {
 	@Inject
 	private ProdutoService produtoService;
 	
+	public ProdutoService getProdutoService() {
+		return produtoService;
+	}
+	public void setProdutoService(ProdutoService produtoService) {
+		this.produtoService = produtoService;
+	}
+
+	private List<Produto> produtos;
 	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	public Produto getProduto() {
 		return produto;
 	}
 	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
-	public ProdutoService getService() {
-		return produtoService;
-	}
-	public void setService(ProdutoService produtoService) {
-		this.produtoService = produtoService;
 	}
 	
 	public void adicionarProduto() throws Exception {
@@ -45,5 +54,10 @@ public class ProdutoBean implements Serializable {
 		}catch(ValidacaoException v){
 		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
 		}
+	}
+	
+	public void listar() throws ValidacaoException {
+		produtos = produtoService.listar();
+		System.out.println(produtos.get(1).getNome());
 	}
 }

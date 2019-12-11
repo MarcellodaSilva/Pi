@@ -79,5 +79,17 @@ public class ProdutoDao implements Serializable{
 		}
 		
 	}
+	
+	public List<Produto> listar() throws ValidacaoException{
+		try {
+			String hql = "select  p from  Produto";
+			TypedQuery<Produto> queryProduto = manager.createQuery(hql, Produto.class);
+			List<Produto> produto =	queryProduto.getResultList();
+	 		return produto;
+			}catch(Exception e) {
+				e.getMessage();
+				throw new ValidacaoException("Deu erro em listar ");
+			}
+	}
 
 }

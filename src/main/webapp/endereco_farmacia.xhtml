@@ -41,10 +41,11 @@
 			});
 		});
 	</script>
-
- <fieldset id="fildset">
+	
+<h:form rendered="false">
+  <fieldset id="fildset">
  <legend>Cadastro de Endereço</legend>
- <h:form>
+  
  <h:panelGrid columns="1">
        <h:outputLabel for="cep" value="CEP: "/>
        <h:message for="cep"></h:message>
@@ -69,7 +70,8 @@
             
        <h:commandButton id="enderecoFarmacia" value="Comfirmar Endereço" action="#{enderecoFarmaciaBean.cadastrarEdereco}"/>
    </h:panelGrid>
-    </h:form>
- </fieldset>  
+   </fieldset>
+ </h:form>
+   
     </h:body>
 </html>

@@ -3,42 +3,48 @@ package model.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="tipo")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_usuario")
-	private Integer idUsuario;
+	@Column(name = "id")
+	protected Integer idUsuario;
 
 	@NotBlank(message = "{cliente.senha.blank.msg}")
 	@Column(name = "senha", nullable = false, length = 30)
-	private String senha;
+	protected String senha;
 
 	@NotBlank(message = "{cliente.email.blank.msg}")
 	@Email(message = "{cliente.email.email.msg}")
 	@Column(name = "login", nullable = false, length = 130)
-	private String login;
+	protected String login;
+	
+	@Column(name = "tipo", length = 2)
+	protected String Tipo;
 
-	@JoinColumn(name = "cpf", referencedColumnName = "cpf")
-	@OneToOne
-	private Cliente cliente;
+	public String getTipo() {
+		return Tipo;
+	}
 
-	@JoinColumn(name = "cnpj", referencedColumnName = "cnpj")
-	@OneToOne
-	private Farmacia farmacia;
+	public void setTipo(String tipo) {
+		Tipo = tipo;
+	}
 
 	public Usuario() {
 	}
@@ -66,21 +72,4 @@ public class Usuario implements Serializable {
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Farmacia getFarmacia() {
-		return farmacia;
-	}
-
-	public void setFarmacia(Farmacia farmacia) {
-		this.farmacia = farmacia;
-	}
-
 }

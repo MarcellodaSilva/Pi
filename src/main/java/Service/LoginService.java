@@ -10,32 +10,27 @@ import dao.FarmaciaDao;
 import exception.ValidacaoException;
 import model.entity.Cliente;
 import model.entity.Farmacia;
+import model.entity.Usuario;
 
 @Stateless
 public class LoginService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private ClienteDao Daocliente;
-	@Inject
-	private FarmaciaDao Daofarmacia;
+	private UsuarioService usuarioService;
 
-	/*public Object logar(String senha, String login) throws ValidacaoException {
+	public Usuario logar(String senha, String login) throws ValidacaoException {
 		if (senha.trim().isEmpty() != true && login.trim().isEmpty() != true) {
-			Cliente cliente = Daocliente.loginCliente(senha, login);
-			Farmacia farmacia = Daofarmacia.loginFarmacia(senha, login);
-			if (cliente != null) {
-				return cliente;
-			} else if (farmacia != null) {
-				return farmacia;
-			} else {
-				return null;
-			}
+			Usuario usuario = usuarioService.logar(senha, login);
+			if (usuario != null) {
+				return usuario;
+			} 		
 
 		} else {
 			throw new ValidacaoException("Erro de Login");
 		}
+		return null;
 
-	}*/
+	}
 
 }
