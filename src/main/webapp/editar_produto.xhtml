@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<h:head>
+<style>
+#fildset{
+right: 400px;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
+	position: absolute;
+	left: 29%;
+	width: 40%;
+	top: 10%;
+	margin-bottom: 5%;
+	background-color: white;
+}
+</style>
+</h:head>
+<h:body>
+<h:form>
+		<div class="container-formulario">
+			<fieldset id="fildset">
+				<legend>Editar Produto</legend>
+					<h:panelGrid columns="1">
+
+						<h:outputLabel for="iptnome" value="Nome" />
+						<h:message for="iptnome" />
+						<h:inputText id="iptnome" value="#{}"
+							required="true" style="width: 480px; max-height:22px"/>
+
+						<h:outputLabel for="iptmarca" value="Marca" />
+						<h:message for="iptmarca" />
+						<h:inputText id="iptmarca" value="#{}"
+							required="true" style="width: 260px; max-height:22px"/>
+
+						<h:outputLabel for="iptvalor" value="Valor" />
+						<h:message for="iptvalor" />
+						<h:inputText id="iptvalor" value="#{}"
+							required="true" style="width: 220px; max-height:22px"/>
+
+						<h:outputLabel for="iptquantidade" value="Quantidade" />
+						<h:message for="iptquantidade" />
+						<p:inputText id="iptquantidade" type="number"
+							value="#{}" required="true" />
+
+
+						<h:outputLabel for="ipttipo" value="Tipo" />
+						<h:message for="ipttipo" />
+						<h:inputText id="ipttipo" value="#{}"
+							required="true" style="width: 220px; max-height:22px"/>
+
+						<h:outputLabel for="iptvalidade" value="Validade" />
+						<h:message for="iptvalidade" />
+						<p:inputMask mask="99/99/9999" id="iptvalidade" value="#{}" required="true" style="width: 220px; max-height:22px" disabled="true"><f:convertDateTime type="date" pattern="dd/mm/yyyy" /></p:inputMask>
+						
+						<h:outputLabel for="iptdescricao" value="Descrição" />
+						<h:message for="iptdescricao" />
+						<p:inputTextarea id="iptdescricao"
+							value="#{}" required="true"  rows="7" cols="50" autoResize="true" maxlength="800"/>
+
+						<h:commandButton action="#{}"
+							value="Salvar" />
+					</h:panelGrid>
+		   </fieldset>
+		</div>	
+	</h:form>
+		
+</h:body>
+</html>

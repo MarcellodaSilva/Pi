@@ -24,10 +24,8 @@ public class ClienteBean implements Serializable {
 	private ClienteService clienteService;
 	@Inject
 	private Cliente cliente;
-	@Inject
-	private LoginBean loginBean;
 	private boolean booleanoForm;
-
+	
 	public boolean isBooleanoForm() {
 		return booleanoForm;
 	}
@@ -54,6 +52,7 @@ public class ClienteBean implements Serializable {
 
 	public void adicionarCliente() throws Exception {
 		try {
+			cliente.setTipo("Pf");
 			clienteService.cadastrarCliente(cliente);
 		} catch (ValidacaoException v) {
 			FacesContext.getCurrentInstance().addMessage(null,

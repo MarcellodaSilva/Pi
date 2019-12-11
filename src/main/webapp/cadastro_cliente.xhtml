@@ -12,7 +12,7 @@
 
 
 	<ui:define name="content" >
-		<h:form id="cadastroCliente" rendered="">
+		<h:form id="cadastroCliente" rendered="true">
 
 			<div class="container-formulario">
 				<fieldset id="fildset">
@@ -44,12 +44,12 @@
 						
 						<h:outputLabel for="iptemail" value="Email" />
 						<h:message for="iptemail" />
-						<h:inputText id="iptemail" value="#{clienteBean.usuario.login}"
+						<h:inputText id="iptemail" value="#{clienteBean.cliente.login}"
 							required="true" style="width: 420px; max-height:22px" />
 
 						<h:outputLabel for="iptsenha" value="Senha" />
 						<h:message for="iptsenha" />
-						<h:inputSecret id="iptsenha" value="#{clienteBean.usuario.senha}"
+						<h:inputSecret id="iptsenha" value="#{clienteBean.cliente.senha}"
 							style="width: 320px; max-height:22px" required="true" />
 
 						<h:commandButton value="Cadastrar"

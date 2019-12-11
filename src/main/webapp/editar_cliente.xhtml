@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+#fildset{
+right: 400px;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
+	position: absolute;
+	left: 29%;
+	width: 40%;
+	top: 25%;
+	margin-bottom: 5%;
+	background-color: white;
+}
+</style>
+</h:head>
+<h:body>
+<h:form id="Editar_clinte" rendered="true">
+
+			<div class="container-formulario">
+				<fieldset id="fildset">
+					<legend>Editar Usuário</legend>
+
+					<h:panelGrid columns="1" id="Grid">
+
+						<h:outputLabel for="iptnome" value="Nome" />
+						<h:message for="iptnome" />
+						<h:inputText id="iptnome" value="#{}"
+							required="true" style="width: 480px; max-height:22px" />
+
+						<h:outputLabel for="iptcpf" value="CPF" />
+						<h:message for="iptcpf" />
+						<p:inputMask mask="999.999.999-99" id="iptcpf" value="#{}"
+							required="true" style="width: 260px; max-height:22px" disabled="true"/>
+							
+						<h:outputLabel for="ipttelefone1" value="Telefone" />
+						<h:message for="ipttelefone1" />
+						<p:inputMask mask="(99)99999-9999" id="ipttelefone1"
+							value="#{}" required="true"
+							style="width: 220px; max-height:22px"/>
+						
+						<h:outputLabel for="ipttelefone2" value="Celular" />
+						<h:message for="ipttelefone2" />
+						<p:inputMask mask="(99)99999-9999" id="ipttelefone2"
+							value="#{}" required="false"
+							style="width: 220px; max-height:22px"/>
+						
+						<h:outputLabel for="iptemail" value="Email" />
+						<h:message for="iptemail" />
+						<h:inputText id="iptemail" value="#{}"
+							required="true" style="width: 420px; max-height:22px" />
+
+						<h:outputLabel for="iptsenha" value="Senha" />
+						<h:message for="iptsenha" />
+						<h:inputSecret id="iptsenha" value="#{}"
+							style="width: 320px; max-height:22px" required="true" />
+
+						<h:commandButton value="Salvar"
+							style="width:120px; height:30px"
+							action="#{}" />
+
+					</h:panelGrid>
+				</fieldset>
+			</div>
+		</h:form>
+</h:body>
+</html>

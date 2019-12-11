@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<style>
+#fildset{
+right: 400px;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
+	position: absolute;
+	left: 29%;
+	width: 40%;
+	top: 35%;
+	margin-bottom: 5%;
+	background-color: white;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form >
+  <fieldset id="fildset">
+  <legend>Excluir Conta</legend>
+   <h:panelGrid columns="1">
+          
+  <h:outputLabel for="login" value="Email: "/>
+  <h:message for="login"/>
+  <h:inputText id="login" value="#{usuarioBean.login}" style="width: 450px;max-height:22px"/>
+
+  <h:outputLabel for="senha" value="Senha: "/>
+  <h:message for="senha"/>
+  <h:inputText id="senha" value="#{usuarioBean.senha}" style="width: 220px; max-height:22px"/> 
+  <h:commandButton id="excluir" value="Excluir" action="#{usuarioBean.excluirConta}"/>
+</h:panelGrid>
+    </fieldset> 
+</h:form>
+</h:body>
+</html>

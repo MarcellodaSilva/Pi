@@ -13,11 +13,11 @@
 
 
 	<ui:define name="content">
+		
+	<h:form>
 		<div class="container-formulario">
 			<fieldset id="fildset">
 				<legend>Cadastrar Produto</legend>
-				<h:form>
-
 					<h:panelGrid columns="1">
 
 						<h:outputLabel for="iptnome" value="Nome" />
@@ -58,8 +58,9 @@
 						<h:commandButton action="#{produtoBean.adicionarProduto}"
 							value="Cadastrar" />
 					</h:panelGrid>
-				</h:form>
-			</fieldset>
-		</div>
+		   </fieldset>
+		</div>	
+	</h:form>
+		
 	</ui:define>
 </ui:composition>
