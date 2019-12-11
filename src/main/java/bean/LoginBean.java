@@ -1,18 +1,19 @@
 package bean;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import Service.ClienteService;
+import Service.FarmaciaService;
 import Service.LoginService;
 import model.entity.Cliente;
 import model.entity.Farmacia;
 import model.entity.Usuario;
-
-import java.io.Serializable;
 
 @Named
 @RequestScoped
@@ -21,11 +22,20 @@ public class LoginBean implements Serializable {
 
 	@Inject
 	private LoginService loginService;
+	
+	@Inject
 	private Cliente cliente;
 	
+	@Inject
 	private Farmacia farmacia;
 	
 	private String login;
+	
+	@Inject
+	private ClienteService clienteService;
+	
+	@Inject
+	private FarmaciaService farmaciaservice;
 
 	public Cliente getCliente() {
 		return cliente;
@@ -44,6 +54,8 @@ public class LoginBean implements Serializable {
 	}
 
 	private String senha;
+
+	
 
 	public String getLogin() {
 		return login;
@@ -72,16 +84,15 @@ public class LoginBean implements Serializable {
   public String logar() {
 		try {
 			Usuario user = loginService.logar(senha, login);
-			 System.out.println(user.getLogin());
 			FacesContext sessao = FacesContext.getCurrentInstance();
-			if (user.getTipo().equals("Pf")) {
-				sessao.getExternalContext().getSessionMap().put("Perfil", (Cliente) user);
-				cliente = (Cliente) user;
+			if (user.getTipo().equalsIgnoreCase("Pf")) {
+				cliente = clienteService.getCliente(user.getIdUsuario());
+				sessao.getExternalContext().getSessionMap().put("Perfil", cliente);
 				return "perfil_cliente";
               
-			} else if (user.getTipo().equals("Pj")) {
-				sessao.getExternalContext().getSessionMap().put("Perfil", (Farmacia) user);
-				farmacia = (Farmacia) user;
+			} else if (user.getTipo().equalsIgnoreCase("Pj")) {
+				farmacia = farmaciaservice.getFarmacia(user.getIdUsuario()); 
+				sessao.getExternalContext().getSessionMap().put("Perfil", farmacia);
 				return "perfil_farmacia";
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,

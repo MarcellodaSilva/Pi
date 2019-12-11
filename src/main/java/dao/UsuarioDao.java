@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import exception.ValidacaoException;
 import model.entity.Cliente;
 import model.entity.Usuario;
 
@@ -76,7 +77,7 @@ public class UsuarioDao implements Serializable{
 		
 	}
 
-	public Usuario logar(String senha , String login)  {
+	public Usuario logar(String senha , String login) throws ValidacaoException  {
 		try {
 			String hql = "select u from Usuario u where u.senha =:senha and u.login =:login";
 			TypedQuery<Usuario> query = manager.createQuery(hql , Usuario.class);
@@ -85,9 +86,9 @@ public class UsuarioDao implements Serializable{
 			Usuario usuario = query.getSingleResult();
 			return usuario;
 		}catch (Exception e) {
-			e.printStackTrace();
+			throw new ValidacaoException("Erro de Login");
 		}	
-		return null;
+		
 			
 	}
 }

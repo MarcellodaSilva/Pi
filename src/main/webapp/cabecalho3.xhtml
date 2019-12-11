@@ -12,7 +12,7 @@
 	<div id="container-cabecalho">
 
 		<h:form id="form-pesquisa">
-			
+
 			<div id="container-logo">
 
 				<a href="pagina_inicial.xhtml"><img
@@ -34,6 +34,13 @@
 			<div id="container-carrinho">
 				<a href="Carrinho.xhtml"><img
 					src="./resources/img/cesta_compra.png" alt="Carrinho" /></a>
+			</div>
+
+
+			<div id="container-btns">
+				<p:commandButton id="btnentrar"
+					onclick="PF('opcoesLogin').show(); return false;" value="#{loginBean.cliente.nome}"
+					rendered="true" />
 			</div>
 		</h:form>
 	</div>
