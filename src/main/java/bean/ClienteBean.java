@@ -24,7 +24,6 @@ public class ClienteBean implements Serializable {
 	private ClienteService clienteService;
 	@Inject
 	private Cliente cliente;
-	
 	private boolean booleanoForm;
 	
 	public boolean isBooleanoForm() {
@@ -61,5 +60,13 @@ public class ClienteBean implements Serializable {
 		}
 
 	}
+	public void atualizarCliente () {
+		try {
+			clienteService.atualizarCliente(loginBean.getCliente());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }

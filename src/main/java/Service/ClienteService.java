@@ -45,6 +45,7 @@ public class ClienteService implements Serializable {
 	}
 
 	public Cliente getCliente(Integer id) {
+		System.out.println(id);
 		return dao.buscaPorId(id);
 	}
 
@@ -58,9 +59,7 @@ public class ClienteService implements Serializable {
 		boolean result = dao.removePorID(id);
 		return result;
 	}
-	/*public Cliente loginCliente(String senha ,String login)   {
-		return dao.loginCliente(senha, login);
-	}*/
+	
 	public void validaCliente(Cliente cliente) throws ValidacaoException {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();

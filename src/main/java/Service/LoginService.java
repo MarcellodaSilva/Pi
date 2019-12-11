@@ -4,12 +4,8 @@ import java.io.Serializable;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
-import dao.ClienteDao;
-import dao.FarmaciaDao;
 import exception.ValidacaoException;
-import model.entity.Cliente;
-import model.entity.Farmacia;
+
 import model.entity.Usuario;
 
 @Stateless

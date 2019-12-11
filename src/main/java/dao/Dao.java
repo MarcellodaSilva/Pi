@@ -32,17 +32,8 @@ public class Dao<T> implements Serializable{
 	}
 	
 	public T atualiza(T t) throws Exception {
-		em.getTransaction().begin();
-		try{
-	
-			em.flush();
-			T merge = em.merge(t);
-			em.getTransaction().commit();
-			return merge;
-		}catch(Exception e){
-			em.getTransaction().rollback();
-			throw e;
-		}
+		return em.merge(t);
+
 	}
 
 	public List<T> listaTodos() {

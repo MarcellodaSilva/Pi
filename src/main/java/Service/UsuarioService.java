@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import dao.UsuarioDao;
+import exception.ValidacaoException;
 import model.entity.Usuario;
 
 @Stateless
@@ -22,7 +23,7 @@ public class UsuarioService implements Serializable {
 	public UsuarioService() {
 	}
 	
-	public Usuario logar(String senha, String login) {
+	public Usuario logar(String senha, String login) throws ValidacaoException {
 		return dao.logar(senha, login);
 	}
 	
