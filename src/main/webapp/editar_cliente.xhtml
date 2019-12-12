@@ -28,39 +28,66 @@ right: 400px;
 
 						<h:outputLabel for="iptnome" value="Nome" />
 						<h:message for="iptnome" />
+						<h:inputText id="iptnome" value="#{usuarioBean.cliente.nome}"
+
 						<h:inputText id="iptnome" value="#{}"
+
 							required="true" style="width: 480px; max-height:22px" />
 
 						<h:outputLabel for="iptcpf" value="CPF" />
 						<h:message for="iptcpf" />
+
+						<p:inputMask mask="999.999.999-99" id="iptcpf" value="#{usuarioBean.cliente.cpf}"
+
 						<p:inputMask mask="999.999.999-99" id="iptcpf" value="#{}"
+
 							required="true" style="width: 260px; max-height:22px" disabled="true"/>
 							
 						<h:outputLabel for="ipttelefone1" value="Telefone" />
 						<h:message for="ipttelefone1" />
 						<p:inputMask mask="(99)99999-9999" id="ipttelefone1"
+
+							value="#{usuarioBean.cliente.telefone01}" required="true"
+
 							value="#{}" required="true"
+
 							style="width: 220px; max-height:22px"/>
 						
 						<h:outputLabel for="ipttelefone2" value="Celular" />
 						<h:message for="ipttelefone2" />
 						<p:inputMask mask="(99)99999-9999" id="ipttelefone2"
+
+							value="#{usuarioBean.cliente.telefone02}" required="false"
+
 							value="#{}" required="false"
+
 							style="width: 220px; max-height:22px"/>
 						
 						<h:outputLabel for="iptemail" value="Email" />
 						<h:message for="iptemail" />
+
+						<h:inputText id="iptemail" value="#{usuarioBean.cliente.login}"
+
 						<h:inputText id="iptemail" value="#{}"
+
 							required="true" style="width: 420px; max-height:22px" />
 
 						<h:outputLabel for="iptsenha" value="Senha" />
 						<h:message for="iptsenha" />
+
+						<h:inputSecret id="iptsenha" value="#{usuarioBean.cliente.senha}"
+
 						<h:inputSecret id="iptsenha" value="#{}"
+
 							style="width: 320px; max-height:22px" required="true" />
 
 						<h:commandButton value="Salvar"
 							style="width:120px; height:30px"
+
+							action="#{usuarioBean.atualizar()}" />
+
 							action="#{}" />
+
 
 					</h:panelGrid>
 				</fieldset>

@@ -14,34 +14,22 @@
 </h:head>
 <h:body>
 <h:form>
-    <p:dataTable id="listar" var="produto" value="#{produtoBean.produtos}"
+    <p:dataTable id="lista" var="produto" value="#{produtoBean.produtos}"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                  paginator="true" rows="10" style="margin-bottom:20px">
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Nome" />
-            </f:facet>
+        <p:column headerText="Nome">
             <h:outputText value="#{produto.nome}" />
         </p:column>
  
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Tipo"/>
-            </f:facet>
+        <p:column headerText="Tipo">
             <h:outputText value="#{produto.tipo}" />
         </p:column>
  
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Quantidade" />
-            </f:facet>
+        <p:column headerText="Quantidade">
             <h:outputText value="#{produto.quantidade}" />
         </p:column>
  
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Validade" />
-            </f:facet>
+        <p:column headerText="validade">
             <h:outputText value="#{produto.validade}" />
         </p:column>
     </p:dataTable>

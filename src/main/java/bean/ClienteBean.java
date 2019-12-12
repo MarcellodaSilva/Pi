@@ -60,13 +60,7 @@ public class ClienteBean implements Serializable {
 		}
 
 	}
-	public void atualizarCliente () {
-		try {
-			clienteService.atualizarCliente(loginBean.getCliente());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 
 }

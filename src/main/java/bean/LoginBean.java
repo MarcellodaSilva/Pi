@@ -29,6 +29,8 @@ public class LoginBean implements Serializable {
 	@Inject
 	private Farmacia farmacia;
 	
+	private FacesContext sessao;
+	
 	private String login;
 	
 	@Inject
@@ -84,7 +86,7 @@ public class LoginBean implements Serializable {
   public String logar() {
 		try {
 			Usuario user = loginService.logar(senha, login);
-			FacesContext sessao = FacesContext.getCurrentInstance();
+			sessao = FacesContext.getCurrentInstance();
 			if (user.getTipo().equalsIgnoreCase("Pf")) {
 				cliente = clienteService.getCliente(user.getIdUsuario());
 				sessao.getExternalContext().getSessionMap().put("Perfil", cliente);
