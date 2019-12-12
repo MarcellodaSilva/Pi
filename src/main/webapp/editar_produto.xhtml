@@ -4,69 +4,94 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-	
+
 <h:head>
-<style>
-#fildset{
-right: 400px;
-	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
-	position: absolute;
-	left: 29%;
-	width: 40%;
-	top: 10%;
-	margin-bottom: 5%;
-	background-color: white;
-}
-</style>
 </h:head>
 <h:body>
-<h:form>
-		<div class="container-formulario">
-			<fieldset id="fildset">
-				<legend>Editar Produto</legend>
-					<h:panelGrid columns="1">
-
-						<h:outputLabel for="iptnome" value="Nome" />
-						<h:message for="iptnome" />
-						<h:inputText id="iptnome" value="#{}"
-							required="true" style="width: 480px; max-height:22px"/>
-
-						<h:outputLabel for="iptmarca" value="Marca" />
-						<h:message for="iptmarca" />
-						<h:inputText id="iptmarca" value="#{}"
-							required="true" style="width: 260px; max-height:22px"/>
-
-						<h:outputLabel for="iptvalor" value="Valor" />
-						<h:message for="iptvalor" />
-						<h:inputText id="iptvalor" value="#{}"
-							required="true" style="width: 220px; max-height:22px"/>
-
-						<h:outputLabel for="iptquantidade" value="Quantidade" />
-						<h:message for="iptquantidade" />
-						<p:inputText id="iptquantidade" type="number"
-							value="#{}" required="true" />
-
-
-						<h:outputLabel for="ipttipo" value="Tipo" />
-						<h:message for="ipttipo" />
-						<h:inputText id="ipttipo" value="#{}"
-							required="true" style="width: 220px; max-height:22px"/>
-
-						<h:outputLabel for="iptvalidade" value="Validade" />
-						<h:message for="iptvalidade" />
-						<p:inputMask mask="99/99/9999" id="iptvalidade" value="#{}" required="true" style="width: 220px; max-height:22px" disabled="true"><f:convertDateTime type="date" pattern="dd/mm/yyyy" /></p:inputMask>
-						
-						<h:outputLabel for="iptdescricao" value="Descrição" />
-						<h:message for="iptdescricao" />
-						<p:inputTextarea id="iptdescricao"
-							value="#{}" required="true"  rows="7" cols="50" autoResize="true" maxlength="800"/>
-
-						<h:commandButton action="#{}"
-							value="Salvar" />
-					</h:panelGrid>
-		   </fieldset>
-		</div>	
-	</h:form>
+	<h:form>
 		
+		<p:growl id="msgs" />
+		<p:dataTable id="msgs" var="produto" value="#{produtoBean.produtos}"
+			editable="true" style="margin-bottom:20px;">
+			<f:facet name="header">
+			produtos
+			</f:facet>
+			<!--<p:ajax event="editar" listener="" update=":form:msgs" />
+			<p:ajax event="cancelar" listener="" update=":form:msgs" />
+-->
+			<p:column headerText=" Nome">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.nome}" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Marca">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.marca}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.marca}" />
+					</f:facet>
+
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText=" Quantidade">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.quantidade}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.quantidade}" />
+					</f:facet>
+
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Validade">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.validade}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.validade}" />
+					</f:facet>
+
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Valor">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.valor}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.valor}" />
+					</f:facet>
+
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Descrição">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{produto.descricao}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:inputText value="#{produto.descricao}" />
+					</f:facet>
+
+				</p:cellEditor>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
 </h:body>
 </html>

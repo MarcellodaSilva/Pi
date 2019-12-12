@@ -3,12 +3,12 @@ package bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import Service.ProdutoService;
 import exception.ValidacaoException;
 import model.entity.Produto;
@@ -25,15 +25,19 @@ public class ProdutoBean implements Serializable {
 	@Inject
 	private ProdutoService produtoService;
 	
+	private List<Produto> produtos;
+	
+	@PostConstruct
+	public void Int() throws ValidacaoException {
+		produtos = produtoService.listar();
+	}
+	
 	public ProdutoService getProdutoService() {
 		return produtoService;
 	}
 	public void setProdutoService(ProdutoService produtoService) {
 		this.produtoService = produtoService;
 	}
-
-	private List<Produto> produtos;
-	
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -56,10 +60,7 @@ public class ProdutoBean implements Serializable {
 		}
 	}
 	
-	public void listar() throws ValidacaoException {
-		produtos = produtoService.listar();
-		System.out.println(produtos.get(1).getNome());
-	}
+	
 	
 	
 }

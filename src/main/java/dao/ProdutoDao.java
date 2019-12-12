@@ -82,9 +82,10 @@ public class ProdutoDao implements Serializable{
 	
 	public List<Produto> listar() throws ValidacaoException{
 		try {
-			String hql = "select  p from  Produto";
+			String hql = "select  p from  Produto p";
 			TypedQuery<Produto> queryProduto = manager.createQuery(hql, Produto.class);
 			List<Produto> produto =	queryProduto.getResultList();
+			System.out.println(produto.get(1).getNome() + produto.get(0).getNome());
 	 		return produto;
 			}catch(Exception e) {
 				e.getMessage();
