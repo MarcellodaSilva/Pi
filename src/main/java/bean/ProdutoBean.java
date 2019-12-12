@@ -4,17 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import Service.ProdutoService;
 import exception.ValidacaoException;
 import model.entity.Produto;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class ProdutoBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -60,14 +61,20 @@ public class ProdutoBean implements Serializable {
 		}
 	}
 	
-
-	
-
 	public void listar() throws ValidacaoException {
 		produtos = produtoService.listar();
-		System.out.println(produtos.get(1).getNome());
 	}
-
-	
-	
+ 
+	public String atualizar(Produto p) {
+		this.produto = p;
+		return "editar_produto";
+	}
+	public String atualizarP() throws Exception {
+		produtoService.atualizarProduto(this.produto);
+		return "listar";
+   }
+   
+   public void deletar(Integer id) throws Exception {
+	  produtoService.removerProduto(id);
+   }
 }

@@ -2,7 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="farmanet" transaction-type="JTA">
   
-    <jta-data-source>java:/FarmaNet</jta-data-source>
+    <jta-data-source>java:/FarmaNetDS</jta-data-source>
      
     <class>model.entity.Estoque</class>
     <class>model.entity.Historico</class>

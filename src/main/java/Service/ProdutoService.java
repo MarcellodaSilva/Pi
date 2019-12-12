@@ -55,9 +55,9 @@ public class ProdutoService implements Serializable {
 		dao.atualiza(produtodoBanco);
 	}
 
-	public boolean removerProduto(Integer id) {
-		boolean result = dao.removePorID(id);
-		return result;
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void removerProduto(Integer id) throws Exception {
+		dao.removePorID(id);
 	}
 	public List<Produto>listar() throws ValidacaoException{
 		return dao.listar();

@@ -21,14 +21,7 @@ public class Dao<T> implements Serializable{
 	}
 
 	public void remove(T t) throws Exception {
-		em.getTransaction().begin();
-		try{
-			em.remove(em.merge(t));
-			em.getTransaction().commit();
-		}catch(Exception e){
-			em.getTransaction().rollback();
-			throw e;
-		}
+			em.remove(t);
 	}
 	
 	public T atualiza(T t) throws Exception {

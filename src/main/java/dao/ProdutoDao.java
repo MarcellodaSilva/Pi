@@ -38,7 +38,6 @@ public class ProdutoDao implements Serializable{
 		 dao.adiciona(t);
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remove(Produto t) throws Exception {
 		dao.remove(t);
 	}
@@ -59,7 +58,7 @@ public class ProdutoDao implements Serializable{
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public boolean removePorID(Integer id) {
-		String hql = "DELETE FROM Usuario WHERE id = :id";
+		String hql = "DELETE FROM Produto WHERE id = :id";
 		Query query = manager.createQuery(hql);
 		query.setParameter("id", id);
 		int modificados = query.executeUpdate();
@@ -85,7 +84,6 @@ public class ProdutoDao implements Serializable{
 			String hql = "select  p from  Produto p";
 			TypedQuery<Produto> queryProduto = manager.createQuery(hql, Produto.class);
 			List<Produto> produto =	queryProduto.getResultList();
-			System.out.println(produto.get(1).getNome() + produto.get(0).getNome());
 	 		return produto;
 			}catch(Exception e) {
 				e.getMessage();

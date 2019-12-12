@@ -22,8 +22,6 @@ public class UsuarioBean implements Serializable{
 
 	@Inject
 	private	UsuarioService usuarioService;
-	private String senha;
-	private String login;
 	@Inject
 	private LoginBean loginBean;
 	@Inject

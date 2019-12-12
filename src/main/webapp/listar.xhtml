@@ -14,23 +14,31 @@
 </h:head>
 <h:body>
 <h:form>
-    <p:dataTable id="lista" var="produto" value="#{produtoBean.produtos}"
+    <p:dataTable id="lista" var="p" value="#{produtoBean.produtos}"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                  paginator="true" rows="10" style="margin-bottom:20px">
         <p:column headerText="Nome">
-            <h:outputText value="#{produto.nome}" />
+            <h:outputText value="#{p.nome}" />
         </p:column>
  
         <p:column headerText="Tipo">
-            <h:outputText value="#{produto.tipo}" />
+            <h:outputText value="#{p.tipo}" />
         </p:column>
  
         <p:column headerText="Quantidade">
-            <h:outputText value="#{produto.quantidade}" />
+            <h:outputText value="#{p.quantidade}" />
         </p:column>
  
         <p:column headerText="validade">
-            <h:outputText value="#{produto.validade}" />
+            <h:outputText value="#{p.validade}" />
+        </p:column>
+        
+        <p:column headerText="Deletar">
+        <h:commandLink action="#{produtoBean.deletar(p.idProduto)}">Deletar</h:commandLink>
+        </p:column>
+        
+        <p:column headerText="Atualizar">
+        <h:commandLink action="#{produtoBean.atualizar(p)}" >Editar</h:commandLink>
         </p:column>
     </p:dataTable>
 </h:form>
