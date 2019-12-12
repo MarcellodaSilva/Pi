@@ -60,7 +60,14 @@ public class ProdutoBean implements Serializable {
 		}
 	}
 	
+
 	
+
+	public void listar() throws ValidacaoException {
+		produtos = produtoService.listar();
+		System.out.println(produtos.get(1).getNome());
+	}
+
 	
 	
 }

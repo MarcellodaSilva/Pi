@@ -8,13 +8,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-
 import Service.ClienteService;
 import Service.FarmaciaService;
 import Service.UsuarioService;
 import exception.ValidacaoException;
 import model.entity.Cliente;
-
+import Service.UsuarioService;
 @Named
 @ViewScoped
 public class UsuarioBean implements Serializable{
@@ -34,8 +33,9 @@ public class UsuarioBean implements Serializable{
 	@Inject
 	private Cliente cliente;
 	
-	
-	
+	private String senha;
+	private String login;
+
 	public UsuarioService getUsuarioService() {
 		return usuarioService;
 	}
@@ -78,6 +78,7 @@ public class UsuarioBean implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+  
 	public String excluirConta() {
 		try {
 			usuarioService.excluirConta(senha, login);
@@ -89,6 +90,7 @@ public class UsuarioBean implements Serializable{
 		return null;
 		
 	}
+  
 	public void atualizar() throws Exception {
 		try {
 			FacesContext fc = FacesContext.getCurrentInstance();
@@ -123,5 +125,6 @@ public class UsuarioBean implements Serializable{
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro de atualizar"));
 		}
 	}
+
 	
 }
