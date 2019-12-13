@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.entity.Cliente;
 import model.entity.Compra;
+import model.entity.Farmacia;
 
 
 @Stateless
@@ -75,6 +76,36 @@ public class ClienteDao implements Serializable{
 			throw e;
 		}
 	}
+	
+	public Cliente loginCliente(String senha , String login)  {
+		try {
+			String sql = "select c from Cliente c where c.senha =:senha and c.login =:login";
+			TypedQuery<Cliente> query = manager.createQuery(sql , Cliente.class);
+			query.setParameter("senha",senha);
+			query.setParameter("login",login);
+			Cliente cliente = query.getSingleResult();
+			if(cliente != null && cliente.getLogin().equals(login) && cliente.getSenha().equals(senha)) {
+				return cliente;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return null;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void excluirConta(String senha, String login) {
+		try {
+			String hql = "Delete from Cliente c where c.senha =: senha and c.login=: login";
+			Query query = manager.createQuery(hql);
+			query.setParameter("senha", senha);
+			query.setParameter("login", login);
+			query.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void clienteCompra (Cliente t , List<Compra> compra) {
 		t.setCompralist(compra);

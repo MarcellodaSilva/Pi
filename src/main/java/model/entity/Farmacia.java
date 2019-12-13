@@ -4,22 +4,31 @@ package model.entity;
 import java.io.Serializable;
 
 
+
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CNPJ;
 
-@Entity(name = "Farmacia")
+@Entity
 @Table(name = "farmacia")
-@DiscriminatorValue(value="Pj")
-public class Farmacia extends Usuario implements Serializable {
+
+public class Farmacia implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer idFarmacia;
 
 	@NotBlank(message = "{farmacia.nome.blank.msg}")
 	@Column(name = "nome", nullable = false, length = 170)
@@ -31,14 +40,22 @@ public class Farmacia extends Usuario implements Serializable {
 	private String cnpj;
 
 	@NotBlank(message = "{farmacia.telefone.blank.msg}")
-	@Size(min = 11, message = "{farmacia.telefone.size.msg}")
-	@Column(name = "telefone01", nullable = false, length = 11)
+	@Size(min = 14, message = "{farmacia.telefone.size.msg}")
+	@Column(name = "telefone01", nullable = false, length = 14)
 	private String telefone01;
 
-	@Size(min = 11, message = "{farmacia.telefone.size.msg}")
-	@Column(name = "telefone02", length = 11)
+	@Column(name = "telefone02", length = 14)
 	private String telefone02;
 
+	@NotBlank(message = "{farmacia.senha.blank.msg}")
+	@Column(name = "senha", nullable = false, length = 30)
+	private String senha;
+
+	@NotBlank(message = "{farmacia.email.blank.msg}")
+	@Email(message = "{farmacia.email.email.msg}")
+	@Column(name = "login", nullable = false, length = 130)
+	private String login;
+	
 	@OneToOne(mappedBy = "Farmacia")
 	private EnderecoFarmacia enderecoFarmacia;
 
@@ -95,4 +112,27 @@ public class Farmacia extends Usuario implements Serializable {
 		this.estoque = estoque;
 	}
 
+	public Integer getIdFarmacia() {
+		return idFarmacia;
+	}
+
+	public void setIdFarmacia(Integer idFarmacia) {
+		this.idFarmacia = idFarmacia;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
 }

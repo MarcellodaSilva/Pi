@@ -89,7 +89,7 @@ public class UsuarioBean implements Serializable{
 		
 	}
   
-	public void atualizar() throws Exception {
+	/*public void atualizar() throws Exception {
 		try {
 			FacesContext fc = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -122,7 +122,7 @@ public class UsuarioBean implements Serializable{
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro de atualizar"));
 		}
-	}
+	}*/
 
 	
 }

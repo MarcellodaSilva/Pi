@@ -2,20 +2,18 @@ package bean;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import Service.ClienteService;
-import Service.UsuarioService;
 import exception.ValidacaoException;
 import model.entity.Cliente;
-import model.entity.Usuario;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class ClienteBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -52,7 +50,6 @@ public class ClienteBean implements Serializable {
 
 	public void adicionarCliente() throws Exception {
 		try {
-			cliente.setTipo("Pf");
 			clienteService.cadastrarCliente(cliente);
 		} catch (ValidacaoException v) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -61,6 +58,13 @@ public class ClienteBean implements Serializable {
 
 	}
 	
+	public void atualizar(Cliente c) {
+		this.cliente = c;
+	}
 	
+	public String atualizarC() throws Exception {
+		clienteService.atualizarCliente(this.cliente);
+		return "pagina_inicial";
+	}
 
 }

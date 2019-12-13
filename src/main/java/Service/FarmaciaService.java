@@ -51,10 +51,15 @@ public class FarmaciaService implements Serializable {
 		boolean result = dao.removePorID(id);
 		return result;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void excluirConta(String senha , String login) {
+		dao.excluirConta(senha, login);
+	}
 
-	/*public Farmacia loginFarmacia(String senha, String login) {
+	public Farmacia loginFarmacia(String senha, String login) {
 		return dao.loginFarmacia(senha, login);
-	}*/
+	}
 	
 	public void validaFarmacia(Farmacia farmacia) throws ValidacaoException {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

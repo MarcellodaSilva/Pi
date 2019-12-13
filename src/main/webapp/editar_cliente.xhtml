@@ -34,7 +34,7 @@ right: 400px;
 						<h:outputLabel for="iptcpf" value="CPF" />
 						<h:message for="iptcpf" />
 						<p:inputMask mask="999.999.999-99" id="iptcpf" value="#{loginBean.cliente.cpf}"
-								required="true" style="width: 260px; max-height:22px" disabled="true"/>
+								required="true" style="width: 260px; max-height:22px" readonly="true"/>
 							
 						<h:outputLabel for="ipttelefone1" value="Telefone" />
 						<h:message for="ipttelefone1" />
@@ -60,7 +60,7 @@ right: 400px;
 
 						<h:commandButton value="Salvar"
 							style="width:120px; height:30px"
-							action="#{usuarioBean.atualizar}" />
+							action="#{clienteBean.atualizarC}" />
 
 					</h:panelGrid>
 				</fieldset>

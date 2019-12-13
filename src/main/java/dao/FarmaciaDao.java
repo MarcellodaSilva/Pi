@@ -59,7 +59,20 @@ public class FarmaciaDao implements Serializable{
 		return dao.buscaPorId(id);
 	}
 	
-	/*public Farmacia loginFarmacia(String senha , String login)  {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void excluirConta(String senha, String login) {
+		try {
+			String hql = "Delete from Farmacia f where f.senha =: senha and f.login=: login";
+			Query query = manager.createQuery(hql);
+			query.setParameter("senha", senha);
+			query.setParameter("login", login);
+			query.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Farmacia loginFarmacia(String senha , String login)  {
 		try {
 			String sql = "select f from Farmacia f where f.senha =:senha and f.login =:login";
 			TypedQuery<Farmacia> query = manager.createQuery(sql , Farmacia.class);
@@ -70,10 +83,11 @@ public class FarmaciaDao implements Serializable{
 				return farmacia;
 			}
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
 		return null;
-	}*/
+	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public boolean removePorID(Integer id) {
 		manager.getTransaction().begin();

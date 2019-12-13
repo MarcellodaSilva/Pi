@@ -60,6 +60,17 @@ public class ClienteService implements Serializable {
 		return result;
 	}
 	
+	
+	public Cliente loginCliente(String senha , String login) {
+		return dao.loginCliente(senha, login);
+		
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void excluirConta(String senha , String login) {
+		dao.excluirConta(senha, login);
+	}
+	
 	public void validaCliente(Cliente cliente) throws ValidacaoException {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();

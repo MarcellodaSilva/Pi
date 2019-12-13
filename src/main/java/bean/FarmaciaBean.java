@@ -2,6 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -9,10 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import Service.FarmaciaService;
-import Service.UsuarioService;
 import exception.ValidacaoException;
 import model.entity.Farmacia;
-import model.entity.Usuario;
 
 @Named
 @ViewScoped
@@ -53,5 +52,7 @@ public class FarmaciaBean implements Serializable {
 		}
 		
 	}
+	
+	
 	
 }

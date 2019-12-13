@@ -4,26 +4,33 @@ package model.entity;
 import java.io.Serializable;
 
 
+
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
-@Entity(name = "Cliente")
+@Entity()
 @Table(name = "cliente")
-@DiscriminatorValue(value="Pf")
-public class Cliente extends Usuario implements Serializable {
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer idCliente;
+	
 	@NotBlank(message = "{cliente.cpf.blank.msg}")
 	@CPF(message = "{cliente.cpf.cpf.msg}")
 	@Column(name = "cpf", nullable = false, unique = true, length = 14)
@@ -34,13 +41,45 @@ public class Cliente extends Usuario implements Serializable {
 	private String nome;
 
 	@NotBlank(message = "{cliente.telefone.blank.msg}")
-	@Size(min = 11, message = "{cliente.telefone.size.msg}")
-	@Column(name = "telefone01", nullable = false, length = 11)
+	@Size(min = 14, message = "{cliente.telefone.size.msg}")
+	@Column(name = "telefone01", nullable = false, length = 14)
 	private String telefone01;
 
-	@Size(min = 11, message = "{cliente.telefone2.size.msg}")
-	@Column(name = "telefone02", length = 11)
+	@Column(name = "telefone02", length = 14)
 	private String telefone02;
+
+	@NotBlank(message = "{cliente.senha.blank.msg}")
+	@Column(name = "senha", nullable = false, length = 30)
+	private String senha;
+
+	@NotBlank(message = "{cliente.email.blank.msg}")
+	@Email(message = "{cliente.email.email.msg}")
+	@Column(name = "login", nullable = false, length = 130)
+	private String login;
+	
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
 	@OneToOne(mappedBy = "Cliente")
 	private EnderecoCliente enderecoCliente;

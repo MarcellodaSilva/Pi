@@ -2,18 +2,16 @@ package bean;
 
 import java.io.Serializable;
 
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import Service.ClienteService;
-import Service.FarmaciaService;
 import Service.LoginService;
 import model.entity.Cliente;
 import model.entity.Farmacia;
-import model.entity.Usuario;
+
 
 @Named
 @RequestScoped
@@ -31,13 +29,10 @@ public class LoginBean implements Serializable {
 	
 	private FacesContext sessao;
 	
+	private	ClienteBean clinteBean;
+	
 	private String login;
-	
-	@Inject
-	private ClienteService clienteService;
-	
-	@Inject
-	private FarmaciaService farmaciaservice;
+
 
 	public Cliente getCliente() {
 		return cliente;
@@ -85,17 +80,17 @@ public class LoginBean implements Serializable {
 
   public String logar() {
 		try {
-			Usuario user = loginService.logar(senha, login);
+			Object user = loginService.logar(senha, login);
 			sessao = FacesContext.getCurrentInstance();
-			if (user.getTipo().equalsIgnoreCase("Pf")) {
-				cliente = clienteService.getCliente(user.getIdUsuario());
+			if (user instanceof Cliente) {
 				sessao.getExternalContext().getSessionMap().put("Perfil", cliente);
-				return "perfil_cliente";
+				cliente = (Cliente) user;
+				return "pagina_inicial";
               
-			} else if (user.getTipo().equalsIgnoreCase("Pj")) {
-				farmacia = farmaciaservice.getFarmacia(user.getIdUsuario()); 
+			} else if (user instanceof Farmacia) {
 				sessao.getExternalContext().getSessionMap().put("Perfil", farmacia);
-				return "perfil_farmacia";
+				farmacia = (Farmacia) user;
+				return "pagina_inicial";
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email ou Senha Incorretos."));
@@ -107,7 +102,7 @@ public class LoginBean implements Serializable {
 		return null;
 
 	}
-
+  
 	public String Deslogar() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "pagina_inicial";

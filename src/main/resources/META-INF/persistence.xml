@@ -13,7 +13,6 @@
     <class>model.entity.Farmacia</class>
     <class>model.entity.EnderecoCliente</class>
     <class>model.entity.Produto</class>
-    <class>model.entity.Usuario</class>
     
     <properties>      
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />

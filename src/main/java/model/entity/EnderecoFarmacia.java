@@ -36,7 +36,7 @@ public class EnderecoFarmacia implements Serializable {
   
     @NotBlank(message="{endereco.cep.blank.msg}")
     @MCPE
-    @Column(name = "cep", nullable = false, length=9)
+    @Column(name = "cep", nullable = false, length=12)
     private String cep;
   
     @NotBlank(message="{endereco.rua.blank.msg}")
