@@ -2,10 +2,9 @@
 package model.entity;
 
 import java.io.Serializable;
-
-
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -53,15 +53,6 @@ public class Produto implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date validade;
   
-    @NotBlank(message="{produto.tipo.blank.msg}")
-    @Column(name = "tipo", nullable=false, length=60)
-    private String tipo;
-
-    @NotBlank(message="{produto.marca.blank.msg}")
-    @Column(name = "marca", nullable=false, length=120)
-    private String marca;
-    
- 
     @PositiveOrZero(message="{produto.quatidade.positiveorzero.msg}")
     @Column(name = "quantidade", nullable = false)
     private int quantidade;
@@ -80,6 +71,17 @@ public class Produto implements Serializable {
     joinColumns = @JoinColumn(name="id_produto"),
     inverseJoinColumns = @JoinColumn(name="id_estoque"))
 	private List<Estoque> estoque;
+    
+    @NotBlank(message="{produto.tipo.blank.msg}")
+    @ManyToOne
+    @JoinColumn(name = "id_tipo", referencedColumnName = "id")
+    private Tipo tipo;
+
+    @NotBlank(message="{produto.marca.blank.msg}")
+    @ManyToOne
+    @JoinColumn(name = "id_marca", referencedColumnName = "id")
+    private Tipo marca;
+    
     
     public Integer getIdProduto() {
         return idProduto;
@@ -119,22 +121,6 @@ public class Produto implements Serializable {
 
     public void setValidade(Date validade) {
         this.validade = validade;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
     }
     
     public int getQuantidade() {
@@ -176,9 +162,6 @@ public class Produto implements Serializable {
 			this.setDescricao(produto.getDescricao());
 		}
 		
-		if(produto.getMarca() != null) {
-			this.setMarca(produto.getMarca());
-		}
 		
 		if(produto.getNome() != null) {
 			this.setNome(produto.getNome());
@@ -188,9 +171,6 @@ public class Produto implements Serializable {
 			this.setQuantidade(produto.getQuantidade());
 		}
 		
-		if(produto.getTipo() != null) {
-			this.setTipo(produto.getTipo());
-		}
 		
 		if(produto.getValidade() != null) {
 		 	this.setValidade(produto.getValidade());
@@ -199,5 +179,21 @@ public class Produto implements Serializable {
 		if(produto.getValor() > 0) {
 			this.setValor(produto.getValor());
 		}	
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Tipo getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Tipo marca) {
+		this.marca = marca;
 	}
 }

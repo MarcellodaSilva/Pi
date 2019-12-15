@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Serializable;
 
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.entity.Cliente;
 import model.entity.Compra;
-import model.entity.Farmacia;
 
 
 @Stateless

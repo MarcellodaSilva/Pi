@@ -25,10 +25,11 @@
 						<h:inputText id="iptnome" value="#{produtoBean.produto.nome}"
 							required="true" style="width: 480px; max-height:22px"/>
 
-						<h:outputLabel for="iptmarca" value="Marca" />
-						<h:message for="iptmarca" />
-						<h:inputText id="iptmarca" value="#{produtoBean.produto.marca}"
-							required="true" style="width: 260px; max-height:22px"/>
+						<h:outputLabel for="marca" value="Marca" />
+						<h:message for="marca" />
+						<h:selectOneMenu style="margin-left: 50%;" value="#{produtoBean.produto.marca}" converter="marcaConverter" id="marca">
+							<f:selectItems value="#{produtoBean.marcas}" var="m" itemLabel="#{m.nomeMarca}" itemValue="#{m}" />
+						</h:selectOneMenu>
 
 						<h:outputLabel for="iptvalor" value="Valor" />
 						<h:message for="iptvalor" />
@@ -41,11 +42,12 @@
 							value="#{produtoBean.produto.quantidade}" required="true" />
 
 
-						<h:outputLabel for="ipttipo" value="Tipo" />
-						<h:message for="ipttipo" />
-						<h:inputText id="ipttipo" value="#{produtoBean.produto.tipo}"
-							required="true" style="width: 220px; max-height:22px"/>
-
+						<h:outputLabel for="tipo" value="Tipo" />
+						<h:message for="tipo" />
+					    <h:selectOneMenu style="margin-left: 50%;" value="#{produtoBean.produto.tipo}" converter="tipoConverter" id="tipo">
+							<f:selectItems value="#{produtoBean.tipos}" var="t" itemLabel="#{t.nomeTipo}" itemValue="#{t}" />
+						</h:selectOneMenu>
+						
 						<h:outputLabel for="iptvalidade" value="Validade" />
 						<h:message for="iptvalidade" />
 						<p:inputMask mask="99/99/9999" id="iptvalidade" value="#{produtoBean.produto.validade}" required="true" style="width: 220px; max-height:22px"><f:convertDateTime type="date" pattern="dd/mm/yyyy" /></p:inputMask>

@@ -12,7 +12,9 @@ import javax.inject.Named;
 
 import Service.ProdutoService;
 import exception.ValidacaoException;
+import model.entity.Marca;
 import model.entity.Produto;
+import model.entity.Tipo;
 
 @Named
 @RequestScoped
@@ -27,6 +29,28 @@ public class ProdutoBean implements Serializable {
 	private ProdutoService produtoService;
 	
 	private List<Produto> produtos;
+	
+	@Inject
+	private List<Marca> marcas;
+	
+	public List<Marca> getMarcas() {
+		return marcas;
+	}
+
+	public void setMarcas(List<Marca> marcas) {
+		this.marcas = marcas;
+	}
+
+	public List<Tipo> getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(List<Tipo> tipos) {
+		this.tipos = tipos;
+	}
+
+	@Inject
+	private List<Tipo> tipos;
 	
 	@PostConstruct
 	public void Int() throws ValidacaoException {
